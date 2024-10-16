@@ -37,7 +37,7 @@ Escreva testes unitários para componentes principais utilizando uma biblioteca 
 ## Documentação (5 pontos)
 Inclua um arquivo README detalhado com instruções de instalação, execução e uso da aplicação.
 
-# Pontuação Total: 75 pontos
+# Pontuação Total: 70 pontos
 
 # Instruções de Submissão
 Faça um fork deste repositório e trabalhe em uma branch seguindo o fluxo GitFlow.
