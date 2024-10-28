@@ -1,64 +1,96 @@
-# frontend-challenge
-Desafio Técnico: Dashboard de Produtos
+# Frontend Challenge
 
-## Descrição do Projeto
-Você foi encarregado de criar um dashboard de produtos para uma loja online. O objetivo é construir uma aplicação frontend que exiba uma lista de produtos, permita a busca e filtragem, e mostre detalhes de um produto selecionado. A aplicação deve ser desenvolvida utilizando React, Next.js e TypeScript, e deve consumir uma API externa para obter os dados dos produtos.
+Este projeto é um exemplo de aplicação frontend desenvolvida com Next.js, utilizando uma abordagem híbrida de renderização (client-side e server-side) para oferecer um desempenho otimizado e uma experiência de usuário amigável.
 
-## Requisitos Técnicos
-Configuração do Projeto (5 pontos)
-Configure um projeto Next.js com TypeScript.
-Utilize Git para versionamento e siga o fluxo GitFlow.
+## Estrutura do Projeto
 
-## Listagem de Produtos (10 pontos)
-Implemente uma página que exiba uma lista de produtos obtidos de uma API externa.
-Cada produto deve mostrar pelo menos o nome, preço e imagem.
+O projeto é organizado em vários diretórios, cada um servindo a um propósito específico:
 
-## Busca e Filtragem (10 pontos)
-Adicione uma funcionalidade de busca para filtrar produtos por nome.
-Implemente filtros por categoria e faixa de preço.
+- **tests**: Contém arquivos de teste.
+- **.next**: Diretório de saída da build do Next.js.
+- **.swc**: Configuração do Speedy Web Compiler (SWC).
+- **app**: Diretório principal da aplicação, contendo arquivos globais como `favicon.ico`, `globals.css`, `layout.tsx`, entre outros.
+- **fonts**: Contém arquivos de fontes.
+- **product**: Contém o arquivo cliente relacionado ao produto (`page.tsx`), que faz a chamada para o arquivo servidor localizado em `components/product/product-content.tsx`. A renderização é feita de forma híbrida, combinando client-side e server-side rendering para oferecer uma experiência otimizada.
+- **components**: Contém componentes reutilizáveis, organizados em subdiretórios como:
+  - **dashboard**: Componentes relacionados ao dashboard.
+  - **navigation**: Componentes de navegação como `back-to-home.tsx` e `nav.tsx`.
+  - **product**: Componentes de produtos renderizados no servidor como `product-content.tsx`.
+  - **skeleton**: Componentes esqueleto, como `skeleton.tsx`.
+  - **ui**: Componentes de interface do usuário com a utilização da Biblioteca Shadcn UI.
+- **context**: Arquivos de contexto para gerenciamento de estado, incluindo `FilterSearchContext.tsx` e `ProductContext.tsx`.
+- **coverage**: Relatórios de cobertura de código.
+- **lib**: Funções auxiliares e utilitárias, incluindo `helpers.ts` e `utils.ts`.
+- **node_modules**: Contém dependências do projeto.
+- **public**: Contém ativos públicos.
+- **services**: Arquivos de serviços como `api.ts` e `networkClients.ts`.
+- **types**: Definições de tipos, incluindo `filter-search.ts`, `product.ts`, e `types.ts`.
 
-## Detalhes do Produto (10 pontos)
-Crie uma página de detalhes que exiba informações adicionais sobre um produto selecionado.
-Utilize a renderização no lado do servidor (SSR) para carregar os detalhes do produto.
+## Estilos e Funcionalidades Interativas
 
-## Gerenciamento de Estado (10 pontos)
-Utilize Context API ou outra solução de gerenciamento de estado para compartilhar o estado de busca e filtros entre componentes.
+A aplicação utiliza **Tailwind CSS** para estilização, o que permite criar interfaces responsivas e otimizadas de forma eficiente. Diferente do Styled Components, o Tailwind é mais leve e permite o uso de classes utilitárias para estados e variáveis de forma dinâmica. Por exemplo, componentes respondem a variáveis como o estado de `sorting` (ordenação de colunas) e exibem diferentes estilos com base nesses estados.
 
-## Integração com API (10 pontos)
-Faça requisições à API para obter a lista de produtos e detalhes de um produto.
-Implemente tratamento de erros para requisições falhas.
+Para funcionalidades de tabela, usamos a **TanStack Table**, permitindo ordenação nas colunas, e os estilos das colunas são ajustados visualmente conforme o estado da ordenação (ascendente, descendente, neutro). Isso proporciona uma experiência mais dinâmica e interativa.
 
-## Otimização de Desempenho (10 pontos)
-Implemente otimizações de desempenho, como memoização de componentes e carregamento assíncrono de imagens.
+## Pesquisa e Filtro Reativos
 
-## Testes (5 pontos)
-Escreva testes unitários para componentes principais utilizando uma biblioteca de testes como Jest.
+A aplicação possui um sistema de pesquisa e filtros reativos. Os botões de "Clear" (limpar filtros e pesquisa) são condicionados às ações do usuário: quando um filtro é ativado, o botão "Clear Filter" é habilitado; da mesma forma, ao digitar uma pesquisa, o botão "Clear Search" se torna ativo. Ambos os botões realizam a limpeza completa de filtros e pesquisa quando acionados, facilitando o uso.
 
-## Documentação (5 pontos)
-Inclua um arquivo README detalhado com instruções de instalação, execução e uso da aplicação.
+## Responsividade
 
-# Pontuação Total: 70 pontos
+A aplicação é totalmente responsiva, com layout adaptável para diferentes dispositivos e tamanhos de tela, garantindo uma experiência consistente e agradável em desktops, tablets e dispositivos móveis.
 
-# Instruções de Submissão
-Faça um fork deste repositório e trabalhe em uma branch seguindo o fluxo GitFlow.
-Após concluir o desafio, abra um Pull Request para a branch `main` do seu fork.
-Inclua no Pull Request uma breve descrição das funcionalidades implementadas e qualquer consideração adicional que julgar relevante.
+## Renderização Híbrida
 
-## Considerações Finais
-O design da aplicação é livre, mas deve ser funcional e responsivo.
-Utilize boas práticas de desenvolvimento, como componentes reutilizáveis e código limpo.
-O tempo estimado para completar o desafio é de 4 a 6 horas.
+A renderização dos detalhes do produto é feita de forma híbrida, combinando client-side e server-side rendering para garantir um desempenho otimizado e uma experiência de usuário amigável.
 
-## Opções de APIs abertas para utilização:
+## Cliente Axios Desacoplado
 
-## Fake Store API
-Descrição: Uma API REST que simula uma loja online com produtos fictícios.
-Endpoint: `https://fakestoreapi.com/products`
-Documentação: [Fake Store API Docs](https://fakestoreapi.com/docs)
+O cliente **Axios** foi desacoplado do arquivo de chamadas da API para permitir flexibilidade em eventuais alterações do cliente, preservando os métodos de chamada.
 
-## DummyJSON
-Descrição: Fornece dados fictícios para produtos, usuários, postagens, etc.
-Endpoint: `https://dummyjson.com/products`
-Documentação: [DummyJSON Procuts API Docs](https://dummyjson.com/docs/products)
+## Contextos
 
-## Este desafio foi projetado para avaliar suas habilidades técnicas e sua capacidade de resolver problemas de forma eficiente. Boa sorte!
+Utilizamos dois contextos neste projeto:
+
+- **Product Context**: Gerencia o estado relacionado aos produtos.
+- **Filter/Search Context**: Gerencia o estado relacionado a filtragem e pesquisa.
+
+## Definições de Tipos
+
+As definições de tipos são separadas em interfaces e exportadas do diretório **types**. As tipagens seguem a mesma lógica dos contextos, com arquivos separados para `filter-search` e `product`.
+
+## Testes
+
+Utilizamos **Jest** para testes, e os logs são exportados para um arquivo `.txt`.
+
+## Helpers
+
+A classe **helpers** contém métodos de apoio para a ordenação da tabela e outras funcionalidades auxiliares.
+
+## Instruções de Instalação
+
+1. Clone o repositório:
+
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Navegue até o diretório do projeto:
+
+   ```bash
+   cd frontend-challenge
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+4. Execute o servidor de desenvolvimento:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Abra o navegador e navegue até `http://localhost:3000` para visualizar a aplicação.
