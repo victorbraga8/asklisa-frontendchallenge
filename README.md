@@ -67,6 +67,10 @@ Utilizamos **Jest** para testes, e os logs são exportados para um arquivo `.txt
 
 A classe **helpers** contém métodos de apoio para a ordenação da tabela e outras funcionalidades auxiliares.
 
+## Acesse o Projeto Online
+
+1. [Clique aqui](https://asklisa-frontend.vercel.app/) ou digite no navegador o endereço https://asklisa-frontend.vercel.app/
+
 ## Instruções de Instalação
 
 1. Clone o repositório:
